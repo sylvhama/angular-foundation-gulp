@@ -1,0 +1,18 @@
+{
+  "name": "tfc2015",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "1.2.x",
+    "jquery": "1.x.x",
+    "angular-route": "1.2.x",
+    "angular-cookies": "1.2.x",
+    "angular-animate": "1.2.x",
+    "angular-touch": "1.2.x",
+    "foundation": "5.2.x",
+    "rem-unit-polyfill": "1.3.x"
+  },
+  "resolutions": {
+    "jquery": "1.x.x"
+  },
+  "appPath": "app"
+}

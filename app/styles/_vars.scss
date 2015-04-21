@@ -1,0 +1,31 @@
+//colors
+$color-white: #fff;
+$color-black: #000;
+
+//fonts
+$base_font_size: 16px;
+
+//z-index
+$z-1: 1;
+$z-9: 9;
+$z-99: 99;
+$z-999: 999;
+$z-9999: 9999;
+
+
+//My mixins/fucntions
+
+@function my-trim-unit($val) {
+  @return $val / ($val * 0 + 1);
+}
+
+@function my-rem-calc($val) {
+  @return $val / my-trim-unit($base_font_size) * 1rem;
+}
+
+@mixin bg-cover() {
+  background-repeat: no-repeat;
+  background-size: cover;
+  -webkit-background-size: cover;
+  background-position: center;
+}

@@ -1,0 +1,133 @@
+@import "../bower_components/foundation/scss/normalize";
+@import "foundation/_settings";
+@import "compass/css3";
+@import "typography";
+@import "vars";
+
+html, body {
+  margin: 0 auto;
+  padding: 0;
+  word-break: keep-all;
+  min-width: 300px;
+  height: auto;
+  background-color: $color-white;
+  color: $color-black;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, li, input, label, span {
+  margin: 0;
+  padding: 0;
+  color: inherit;
+}
+
+p, input, label {
+  font-size: rem-calc(16);
+  line-height: rem-calc(21);
+}
+
+a:focus {
+  color: inherit;
+  outline: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  &:hover {
+    color: inherit;
+    text-decoration: none !important;
+  }
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.ialic {
+  font-style: italic;
+}
+
+.no-margin {
+  margin:0;
+}
+
+.no-padding {
+  padding:0;
+}
+
+.clear:before,
+.clear:after {
+  content: ".";
+  display: block;
+  height: 0;
+  overflow: hidden;
+}
+.clear:after {clear: both;}
+
+.float-left {
+  float: left;
+}
+.float-right {
+  float: right;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.inline {
+  display: inline !important;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.italic {
+  font-style: italic;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.check-form {
+  .ng-invalid {
+    border-color: red !important;
+    @include transition(border-color .25s ease);
+  }
+}
+
+.error {
+  color: red !important;
+  font-size: rem-calc(16);
+  line-height: rem-calc(24);
+  opacity: 1;
+  @include transition(opacity .25s ease, line-height .25s ease);
+
+  &.ng-hide {
+    line-height: 0;
+    opacity: 0;
+  }
+}
+
+select {
+  &, &:hover, &:focus {
+    padding: 0 20px 0 0;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    background-image: url('/images/header-icon-arrow.png');
+    background-position: 95% 60%;
+  }
+}
+
+@import "tfc";
+@import "anim";
