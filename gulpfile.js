@@ -18,7 +18,7 @@ var paths = {
     coffees: ['app/scripts/**/*.coffee'],
     js: ['app/scripts/**/*.js'],
     styles: ['app/styles/**/*.scss'],
-    images: 'app/images/**/*'
+    images: 'app/images/**/*',
 };
 
 gulp.task('clean', function(cb) {
@@ -33,7 +33,7 @@ gulp.task('coffee', function() {
 });
 
 gulp.task('styles', function() {
-    gulp.src('app/styles/*.scss')
+    gulp.src(paths.styles)
       .pipe(plumber())
       .pipe(compass({
           config_file: './config.rb',
@@ -50,13 +50,13 @@ gulp.task('html', function () {
     .pipe(assets)
     .pipe(gulpif('*.js', uglify()))
     .pipe(gulpif('*.css', minifyCss()))
+    .pipe(assets.restore())
+    .pipe(useref())
     .pipe(gulpif('*.html', minifyHtml({
       empty: true,
       spare: true,
       quotes: true
     })))
-    .pipe(assets.restore())
-    .pipe(useref())
     .pipe(gulp.dest('dist'));
 });
 
@@ -75,6 +75,7 @@ gulp.task('views', function () {
     }))
     .pipe(gulp.dest('dist/views'));
 });
+
 gulp.task('partials', function () {
   return gulp.src('app/partials/**/*.html')
     .pipe(minifyHtml({
@@ -88,6 +89,15 @@ gulp.task('partials', function () {
 gulp.task('php', function () {
   return gulp.src('app/php/**/*.*')
     .pipe(gulp.dest('dist/php'));
+});
+
+gulp.task('ie', function () {
+  gulp.src('app/scripts/respond.js')
+    .pipe(gulp.dest('dist/scripts'));
+
+  return gulp.src('app/styles/ie.css')
+    .pipe(minifyCss())
+    .pipe(gulp.dest('dist/styles'));
 });
 
 gulp.task('my-assets', function () {
@@ -114,5 +124,5 @@ gulp.task('watch', function() {
   gulp.watch(paths.coffees, ['coffee']);
 });
 
-gulp.task('build', ['html', 'images', 'views', 'partials', 'php', 'my-assets']);
+gulp.task('build', ['html', 'images', 'views', 'partials', 'php', 'my-assets', 'ie']);
 gulp.task('default', ['watch']);
